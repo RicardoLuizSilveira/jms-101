@@ -1,5 +1,6 @@
 package br.com.projetochernobyl.jms;
 
+import java.util.Properties;
 import java.util.Scanner;
 
 import javax.jms.Connection;
@@ -19,7 +20,13 @@ public class TestConsumer {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws JMSException, NamingException {
-		InitialContext context = new InitialContext();
+		
+		Properties properties = new Properties();
+		properties.setProperty("java.naming.factory.initial", "org.apache.activemq.jndi.ActiveMQInitialContextFactory");
+		properties.setProperty("java.naming.provider.url", "tcp://localhost:61616");
+		properties.setProperty("queue.financeiro", "fila.financeiro");
+		
+		InitialContext context = new InitialContext(properties);
 		ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
