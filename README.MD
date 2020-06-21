@@ -4,6 +4,8 @@
 Java Doc
   - [Destination](http://docs.oracle.com/javaee/5/api/javax/jms/Destination.html)
   - [MessageConsumer](https://docs.oracle.com/javaee/7/api/javax/jms/MessageConsumer.html#receive-long-)
+  - [MessageProducer](https://docs.oracle.com/javaee/7/api/javax/jms/MessageProducer.html)
+  - [Message](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html)
   - JMS spec diferences 1.0 x 2.0
     - API JMS 1.0
       - ConnectionFactory -> Connection  -> Session -> MessageConsumer
