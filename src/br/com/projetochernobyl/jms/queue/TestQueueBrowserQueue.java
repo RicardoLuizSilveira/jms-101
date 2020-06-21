@@ -1,23 +1,32 @@
 package br.com.projetochernobyl.jms.queue;
 
+import java.util.Enumeration;
+import java.util.Properties;
 import java.util.Scanner;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageProducer;
+import javax.jms.Queue;
+import javax.jms.QueueBrowser;
 import javax.jms.Session;
+import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 
-public class TestProducer {
+public class TestQueueBrowserQueue {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws JMSException, NamingException {
-		InitialContext context = new InitialContext();
+		
+		Properties properties = new Properties();
+		properties.setProperty("java.naming.factory.initial", "org.apache.activemq.jndi.ActiveMQInitialContextFactory");
+		properties.setProperty("java.naming.provider.url", "tcp://localhost:61616");
+		properties.setProperty("queue.financeiro", "fila.financeiro");
+		
+		InitialContext context = new InitialContext(properties);
 		ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
 		Connection conn = factory.createConnection();
 		conn.start();
@@ -27,13 +36,14 @@ public class TestProducer {
 		Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		Destination queue = (Destination) context.lookup("financeiro");
 		
-		// from producer we are able to send a message
-		MessageProducer producer = session.createProducer(queue);
+		QueueBrowser browser = session.createBrowser((Queue) queue);
+		@SuppressWarnings("unchecked")
+		Enumeration<TextMessage> msg = browser.getEnumeration();
+		while (msg.hasMoreElements()) {
+			TextMessage text = msg.nextElement();
+			System.out.println("Message: " + text.getText());
+		}
 		
-		Message message = session.createTextMessage("{\"id\": 12544, \"name\": \"joão\"}");
-		producer.send(message);
-		
-
 		new Scanner(System.in).nextLine();
 		
 		session.close();
