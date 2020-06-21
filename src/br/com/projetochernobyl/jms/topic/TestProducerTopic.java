@@ -11,7 +11,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 
-public class TestProducer {
+public class TestProducerTopic {
 
 	public static void main(String[] args) throws JMSException, NamingException {
 		InitialContext context = new InitialContext();
