@@ -1,4 +1,4 @@
-package br.com.projetochernobyl.jms;
+package br.com.projetochernobyl.jms.queue;
 
 import java.util.Scanner;
 

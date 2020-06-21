@@ -1,5 +1,6 @@
-package br.com.projetochernobyl.jms;
+package br.com.projetochernobyl.jms.queue;
 
+import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -7,16 +8,15 @@ import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageConsumer;
-import javax.jms.MessageListener;
+import javax.jms.Queue;
+import javax.jms.QueueBrowser;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 
-public class TestConsumer {
+public class TestQueueBrowser {
 
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws JMSException, NamingException {
@@ -36,22 +36,14 @@ public class TestConsumer {
 		Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		Destination queue = (Destination) context.lookup("financeiro");
 		
-		// from consumer we are able to get a message
-		MessageConsumer consumer = session.createConsumer(queue);
-		consumer.setMessageListener(new MessageListener() {
-
-			@Override
-			public void onMessage(Message message) {
-				TextMessage text = (TextMessage) message;
-				try {
-					System.out.println("Message: " + text.getText());
-				} catch (JMSException e) {
-					e.printStackTrace();
-				}
-			}
-			
-		});
-
+		QueueBrowser browser = session.createBrowser((Queue) queue);
+		@SuppressWarnings("unchecked")
+		Enumeration<TextMessage> msg = browser.getEnumeration();
+		while (msg.hasMoreElements()) {
+			TextMessage text = msg.nextElement();
+			System.out.println("Message: " + text.getText());
+		}
+		
 		new Scanner(System.in).nextLine();
 		
 		session.close();

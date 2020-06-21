@@ -1,7 +1,7 @@
 # JMS
 
 ### Docs
-Java Doc
+**Java Doc**
   - [Destination](http://docs.oracle.com/javaee/5/api/javax/jms/Destination.html)
   - [MessageConsumer](https://docs.oracle.com/javaee/7/api/javax/jms/MessageConsumer.html#receive-long-)
   - [MessageProducer](https://docs.oracle.com/javaee/7/api/javax/jms/MessageProducer.html)
@@ -19,10 +19,10 @@ Java Doc
     - [JMSProducer](https://docs.oracle.com/javaee/7/api/javax/jms/JMSProducer.html)
     - [JMSConsumer](https://docs.oracle.com/javaee/7/api/javax/jms/JMSConsumer.html)
 
-ActiveMQ 5
+**ActiveMQ 5**
   - [JNDI Support: config initial context](https://activemq.apache.org/jndi-support.html)
 
-JMS Conponents
+**JMS Conponents**
 
 ![Components of JMS structure](others/img/jms-comp.png)
 
