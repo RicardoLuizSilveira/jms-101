@@ -6,6 +6,8 @@ Java Doc
   - [MessageConsumer](https://docs.oracle.com/javaee/7/api/javax/jms/MessageConsumer.html#receive-long-)
   - [MessageProducer](https://docs.oracle.com/javaee/7/api/javax/jms/MessageProducer.html)
   - [Message](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html)
+  - [QueueBrowser](https://docs.oracle.com/javaee/7/api/javax/jms/QueueBrowser.html)
+    - [Enumeration](https://docs.oracle.com/javase/7/docs/api/java/util/Enumeration.html?is-external=true)
   - JMS spec diferences 1.0 x 2.0
     - API JMS 1.0
       - ConnectionFactory -> Connection  -> Session -> MessageConsumer
