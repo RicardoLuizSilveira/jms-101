@@ -12,7 +12,7 @@ Java Doc
     - API JMS 2.0
       - ConnectionFactory -> JMSContext -> JMSConsumer
   - [Blog Caelum - API JMS 2.0](https://blog.caelum.com.br/a-nova-api-do-jms-2-0-no-java-ee-7/)
-  - [JMS official spec](https://javaee.github.io/jms-spec/)
+  - [JMS 2.0 official spec](https://javaee.github.io/jms-spec/)
     - [JMSContext](https://docs.oracle.com/javaee/7/api/javax/jms/JMSContext.html)
     - [JMSProducer](https://docs.oracle.com/javaee/7/api/javax/jms/JMSProducer.html)
     - [JMSConsumer](https://docs.oracle.com/javaee/7/api/javax/jms/JMSConsumer.html)
@@ -20,6 +20,9 @@ Java Doc
 ActiveMQ 5
   - [JNDI Support: config initial context](https://activemq.apache.org/jndi-support.html)
 
+JMS Conponents
+
+![Components of JMS structure](others/img/jms-comp.png)
 
 ### How to Run
 This code intends to provide a simple study case of a JMS Consumer.
