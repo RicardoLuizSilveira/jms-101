@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.TextMessage;
+import javax.jms.Topic;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -22,14 +22,15 @@ public class TestConsumerTopicStoreDurable {
 		InitialContext context = new InitialContext();
 		ConnectionFactory factory = (ConnectionFactory) context.lookup("ConnectionFactory");
 		Connection conn = factory.createConnection();
+		conn.setClientID("Store");
 		conn.start();
 		
 		// get consumer from session, it requires a Destination (Topic)
 		Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
-		Destination topic = (Destination) context.lookup("loja");
+		Topic topic = (Topic) context.lookup("loja");
 		
 		// from consumer we are able to get a message
-		MessageConsumer consumer = session.createConsumer(topic);
+		MessageConsumer consumer = session.createDurableSubscriber(topic, "subscription");
 		consumer.setMessageListener(new MessageListener() {
 
 			@Override
