@@ -1,8 +1,19 @@
 # JMS
 
 ### Docs
-Java 8
-  - [JavaDoc Destination.class](http://docs.oracle.com/javaee/5/api/javax/jms/Destination.html)
+Java Doc
+  - [Destination](http://docs.oracle.com/javaee/5/api/javax/jms/Destination.html)
+  - [MessageConsumer](https://docs.oracle.com/javaee/7/api/javax/jms/MessageConsumer.html#receive-long-)
+  - JMS spec diferences 1.0 x 2.0
+    - API JMS 1.0
+      - ConnectionFactory -> Connection  -> Session -> MessageConsumer
+    - API JMS 2.0
+      - ConnectionFactory -> JMSContext -> JMSConsumer
+  - [Blog Caelum - API JMS 2.0](https://blog.caelum.com.br/a-nova-api-do-jms-2-0-no-java-ee-7/)
+  - [JMS official spec](https://javaee.github.io/jms-spec/)
+    - [JMSContext](https://docs.oracle.com/javaee/7/api/javax/jms/JMSContext.html)
+    - [JMSProducer](https://docs.oracle.com/javaee/7/api/javax/jms/JMSProducer.html)
+    - [JMSConsumer](https://docs.oracle.com/javaee/7/api/javax/jms/JMSConsumer.html)
 
 ActiveMQ 5
   - [JNDI Support: config initial context](https://activemq.apache.org/jndi-support.html)
