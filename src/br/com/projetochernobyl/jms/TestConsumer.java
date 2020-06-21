@@ -8,7 +8,9 @@ import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
+import javax.jms.MessageListener;
 import javax.jms.Session;
+import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -29,9 +31,20 @@ public class TestConsumer {
 		
 		// from consumer we are able to get a message
 		MessageConsumer consumer = session.createConsumer(queue);
-		Message message = consumer.receive();
+		consumer.setMessageListener(new MessageListener() {
 
-		System.out.println("Message: " + message);
+			@Override
+			public void onMessage(Message message) {
+				TextMessage text = (TextMessage) message;
+				try {
+					System.out.println("Message: " + text.getText());
+				} catch (JMSException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		});
+
 		new Scanner(System.in).nextLine();
 		
 		session.close();
