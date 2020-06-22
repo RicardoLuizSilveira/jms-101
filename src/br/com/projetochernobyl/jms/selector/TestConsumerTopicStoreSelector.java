@@ -28,7 +28,7 @@ public class TestConsumerTopicStoreSelector {
 		Session session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 		Topic topic = (Topic) context.lookup("loja");
 		
-		MessageConsumer consumer = session.createDurableSubscriber(topic, "sibcription-selector", "ebook=false", false);
+		MessageConsumer consumer = session.createDurableSubscriber(topic, "sibcription-selector", "ebook is null or ebook=false", false);
 		consumer.setMessageListener(new MessageListener() {
 
 			@Override
