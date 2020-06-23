@@ -26,6 +26,9 @@
     - System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","java.lang,br.com.caelum.modelo");
     - System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","*");
 
+**EIP**
+  - [Canonical Data Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html)
+
 **JMS Conponents**
 
 ![Components of JMS structure](others/img/jms-comp.png)
