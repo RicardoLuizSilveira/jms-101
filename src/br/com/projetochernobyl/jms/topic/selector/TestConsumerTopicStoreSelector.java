@@ -1,4 +1,4 @@
-package br.com.projetochernobyl.jms.selector;
+package br.com.projetochernobyl.jms.topic.selector;
 
 import java.util.Scanner;
 

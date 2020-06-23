@@ -1,4 +1,4 @@
-package br.com.projetochernobyl.jms.selector;
+package br.com.projetochernobyl.jms.topic.selector;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
