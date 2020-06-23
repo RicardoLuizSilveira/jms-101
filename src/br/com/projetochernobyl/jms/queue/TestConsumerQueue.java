@@ -33,7 +33,7 @@ public class TestConsumerQueue {
 		
 		
 		// get consumer from session, it requires a Destination (Queue)
-		Session session = conn.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+		Session session = conn.createSession(true, Session.SESSION_TRANSACTED);
 		Destination queue = (Destination) context.lookup("financeiro");
 		
 		// from consumer we are able to get a message
@@ -45,8 +45,13 @@ public class TestConsumerQueue {
 				TextMessage text = (TextMessage) message;
 				try {
 					System.out.println("Message: " + text.getText());
-					message.acknowledge();
+					session.commit();
 				} catch (JMSException e) {
+					try {
+						session.rollback();
+					} catch (JMSException e1) {
+						e1.printStackTrace();
+					}
 					e.printStackTrace();
 				}
 			}
