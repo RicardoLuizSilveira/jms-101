@@ -21,6 +21,10 @@
 
 **ActiveMQ 5**
   - [JNDI Support: config initial context](https://activemq.apache.org/jndi-support.html)
+  - [DLQ Queue](http://activemq.apache.org/message-redelivery-and-dlq-handling.html)
+  - [ObjectMessage Security](http://activemq.apache.org/objectmessage.html)
+    - System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","java.lang,br.com.caelum.modelo");
+    - System.setProperty("org.apache.activemq.SERIALIZABLE_PACKAGES","*");
 
 **JMS Conponents**
 
