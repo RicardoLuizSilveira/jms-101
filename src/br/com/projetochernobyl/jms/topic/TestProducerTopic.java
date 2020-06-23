@@ -1,7 +1,5 @@
 package br.com.projetochernobyl.jms.topic;
 
-import java.io.StringWriter;
-
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -11,7 +9,6 @@ import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.xml.bind.JAXB;
 
 import br.com.projetochernobyl.modelo.Pedido;
 import br.com.projetochernobyl.modelo.PedidoFactory;
@@ -35,11 +32,7 @@ public class TestProducerTopic {
 		
 		Pedido pedido = new PedidoFactory().geraPedidoComValores();
 		
-		StringWriter writer = new StringWriter();
-		JAXB.marshal(pedido, writer);
-		String xml = writer.toString();
-		
-		Message message = session.createTextMessage(xml);
+		Message message = session.createObjectMessage(pedido);
 		producer.send(message);
 		
 		session.close();

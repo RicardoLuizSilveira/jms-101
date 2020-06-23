@@ -8,11 +8,13 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
+import javax.jms.ObjectMessage;
 import javax.jms.Session;
-import javax.jms.TextMessage;
 import javax.jms.Topic;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+
+import br.com.projetochernobyl.modelo.Pedido;
 
 
 public class TestConsumerTopicSalesDurable {
@@ -35,9 +37,10 @@ public class TestConsumerTopicSalesDurable {
 
 			@Override
 			public void onMessage(Message message) {
-				TextMessage text = (TextMessage) message;
+				ObjectMessage objectMessage = (ObjectMessage) message;
 				try {
-					System.out.println("Message: " + text.getText());
+					Pedido pedido = (Pedido) objectMessage.getObject();
+					System.out.println("Message: " + pedido.getCodigo());
 				} catch (JMSException e) {
 					e.printStackTrace();
 				}
